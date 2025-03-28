@@ -8,6 +8,8 @@ namespace JEBST
 {
     public class CameraManager : MonoInstaller
     {
+        private const float TIME_OFFSET = 0.2f;
+
         public enum Positions { General = 0, ControlUnit = 1, GasTankConnection = 2, Lateral = 3 }
 
         private Positions _currentPos = Positions.General;
@@ -44,6 +46,8 @@ namespace JEBST
 
                 yield return new WaitForSeconds(timeAux);
             }
+
+            yield return new WaitForSeconds(TIME_OFFSET);
         }
 
         private float SetCameraPos(Positions pos)

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da99ffa5b528e24c8dccb0f9211828a, type: 3}
+  m_Name: ScriptableTexts
+  m_EditorClassIdentifier: 
+  _dialogues:
+  - Welcome, in the following training, you will learn how to change a blade in a
+    small JetEngine.
+  - <b>Step 1:</b> Validate the engine is off by checking the control unit.
+  - <b>Step 2:</b> Disconnect the gas tank.
+  - <b>Step 3:</b> Remove the blade cover.
+  - <b>Step 4:</b> Remove the old blade.
+  - <b>Step 5:</b> Insert the new blade.
+  - <b>Step 6:</b> Mount the blade cover.
+  - <b>Step 7:</b> Connect the gas tank.
+  - <b>Step 8:</b> Start the engine and test that it is working.
+  - Thanks for completing the Jet Engine Blade swap training.

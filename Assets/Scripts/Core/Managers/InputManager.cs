@@ -7,9 +7,8 @@ namespace Core.Managers
     /// InputManager is responsible for managing the player's input.
     /// It is also responsible for managing the current input device.
     /// 
-    /// Since this is a small and simple project that serves as a portfolio sample, 
-    /// this is an extremely simple InputManager that only checks the WASD and arrow keys for Pac-Man movement. 
-    /// More complex projects should have a more elaborate InputManager.
+    /// In this case, it only takes care of updating the mouse position 
+    /// and checking when the player clicks the mouse.
     /// </summary>
     public class InputManager : MonoBehaviour, IInputManager
     {

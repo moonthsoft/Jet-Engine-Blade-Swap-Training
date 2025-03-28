@@ -1,12 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using Zenject;
+using JEBST.Definitions.Dialogues;
+using Core.Definitions.Scenes;
+using Core.Managers;
 
 namespace JEBST
 {
     public class SceneLogic : MonoBehaviour
     {
         private CameraManager _cameraManager;
+        private ILoadSceneManager _loadSceneManager;
+
+        [SerializeField] private DialoguesUI _dialoguesUI;
 
         [SerializeField] private ControlUnit _controlUnit;
         [SerializeField] private InteractableAnimator _tankConnection;
@@ -17,6 +23,8 @@ namespace JEBST
 
         [Inject] private void InjectCameraManager(CameraManager cameraManager) { _cameraManager = cameraManager; }
 
+        [Inject] private void InjectInputManager(ILoadSceneManager loadSceneManager) { _loadSceneManager = loadSceneManager; }
+
 
         void Start()
         {
@@ -25,29 +33,24 @@ namespace JEBST
 
         private IEnumerator StepsCoroutine()
         {
-            //TSTART
+            //START
+            yield return new WaitForSeconds(1.5f);
 
-            //TODO: UI Welcome
-
-            //TODO: UI Feedback start
-
-            yield return new WaitForSeconds(1f);
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Start));
 
 
             //STEP 1: Validate the engine is off by checking the control unit.
-
             yield return StartCoroutine(_cameraManager.MoveCameraCoroutine(CameraManager.Positions.ControlUnit));
 
-            //TODO: UI Step 1
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Step_1));
 
             yield return StartCoroutine(ActiveInteractableCoroutine(_controlUnit));
 
 
             //STEP 2: Disconnect the gas tank.
-
             yield return StartCoroutine(_cameraManager.MoveCameraCoroutine(CameraManager.Positions.GasTankConnection));
 
-            //TODO: UI Step 2
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Step_2));
 
             yield return StartCoroutine(ActiveInteractableCoroutine(_tankConnection));
 
@@ -56,28 +59,28 @@ namespace JEBST
 
             yield return StartCoroutine(_cameraManager.MoveCameraCoroutine(CameraManager.Positions.Lateral));
 
-            //TODO: UI Step 3
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Step_3));
 
             yield return StartCoroutine(ActiveInteractableCoroutine(_bladeCover));
 
 
             //STEP 4: Remove the old blade.
 
-            //TODO: UI Step 4
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Step_4));
 
             yield return StartCoroutine(ActiveInteractableCoroutine(_oldBlade));
 
 
             //STEP 5: Insert the new blade.
 
-            //TODO: UI Step 5
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Step_5));
 
             yield return StartCoroutine(ActiveInteractableCoroutine(_newBlade));
 
 
             //STEP 6: Mount the blade cover.
 
-            //TODO: UI Step 6
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Step_6));
 
             yield return StartCoroutine(ActiveInteractableCoroutine(_bladeCover));
 
@@ -86,7 +89,7 @@ namespace JEBST
 
             yield return StartCoroutine(_cameraManager.MoveCameraCoroutine(CameraManager.Positions.GasTankConnection));
 
-            //TODO: UI Step 7
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Step_7));
 
             yield return StartCoroutine(ActiveInteractableCoroutine(_tankConnection));
 
@@ -95,7 +98,7 @@ namespace JEBST
 
             yield return StartCoroutine(_cameraManager.MoveCameraCoroutine(CameraManager.Positions.ControlUnit));
 
-            //TODO: UI Step 8
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Step_8));
 
             yield return StartCoroutine(ActiveInteractableCoroutine(_controlUnit));
 
@@ -104,9 +107,11 @@ namespace JEBST
 
             yield return StartCoroutine(_cameraManager.MoveCameraCoroutine(CameraManager.Positions.General));
 
-            //TODO: UI Feedback end
+            yield return new WaitForSeconds(2f);
 
-            //TODO: Return Main Menu
+            yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.End));
+
+            _loadSceneManager.LoadScene(Scenes.MainMenu);
         }
 
         private IEnumerator ActiveInteractableCoroutine(Interactable interactable)
