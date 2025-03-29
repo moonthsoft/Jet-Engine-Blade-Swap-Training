@@ -12,5 +12,7 @@ namespace Core.Managers
         public Vector2 MousePos { get; }
 
         public event Action ClickEvent;
+
+        public event Action PauseEvent;
     }
 }

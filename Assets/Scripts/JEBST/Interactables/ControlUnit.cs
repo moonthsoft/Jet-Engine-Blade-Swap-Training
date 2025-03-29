@@ -11,7 +11,6 @@ namespace JEBST
 
         [SerializeField] private Material _matOn;
         [SerializeField] private Material _matOff;
-        [SerializeField] private Material _matHighlight;
 
 
         private void Start()

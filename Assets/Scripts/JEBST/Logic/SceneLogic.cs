@@ -23,7 +23,7 @@ namespace JEBST
 
         [Inject] private void InjectCameraManager(CameraManager cameraManager) { _cameraManager = cameraManager; }
 
-        [Inject] private void InjectInputManager(ILoadSceneManager loadSceneManager) { _loadSceneManager = loadSceneManager; }
+        [Inject] private void InjectLoadSceneManager(ILoadSceneManager loadSceneManager) { _loadSceneManager = loadSceneManager; }
 
 
         void Start()
@@ -34,7 +34,7 @@ namespace JEBST
         private IEnumerator StepsCoroutine()
         {
             //START
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
 
             yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.Start));
 
@@ -110,6 +110,8 @@ namespace JEBST
             yield return new WaitForSeconds(2f);
 
             yield return StartCoroutine(_dialoguesUI.ActiveDialogueCoroutine(Dialogue.End));
+
+            yield return new WaitForSeconds(1f);
 
             _loadSceneManager.LoadScene(Scenes.MainMenu);
         }

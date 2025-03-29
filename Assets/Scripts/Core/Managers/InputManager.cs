@@ -15,6 +15,7 @@ namespace Core.Managers
         private Vector2 _mousePos = new();
 
         public event Action ClickEvent;
+        public event Action PauseEvent;
 
         public Vector2 MousePos { get { return _mousePos; } }
 
@@ -24,6 +25,8 @@ namespace Core.Managers
             UpdateMousePos();
 
             CheckMouseClick();
+
+            CheckPause();
         }
 
         private void UpdateMousePos()
@@ -36,6 +39,15 @@ namespace Core.Managers
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 ClickEvent?.Invoke();
+            }
+        }
+
+        private void CheckPause()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)
+                || Input.GetKeyDown(KeyCode.P))
+            {
+                PauseEvent?.Invoke();
             }
         }
     }

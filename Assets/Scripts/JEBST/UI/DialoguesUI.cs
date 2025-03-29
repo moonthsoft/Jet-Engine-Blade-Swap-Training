@@ -16,6 +16,7 @@ namespace JEBST
         private IInputManager _inputManager;
         private bool _active;
 
+        [SerializeField] private PauseUI _pauseUI;
         [SerializeField] private ScriptableTexts _scriptableTexts;
         [SerializeField] private Animator _animator;
         [SerializeField] private AnimationClip _transition;
@@ -81,9 +82,7 @@ namespace JEBST
 
             while (index < text.Length)
             {
-                //TODO: put pause
-                //if (!_pauseManager.Instance.IsPaused)
-                if (true)
+                if (!_pauseUI.IsPaused)
                 {
                     //For the rich text
                     while (text[index] == '<')

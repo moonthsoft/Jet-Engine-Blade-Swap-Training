@@ -3,17 +3,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using Core.Definitions.Scenes;
+using System.Collections;
 
 namespace JEBST
 {
-    public class MainMenuUI : MonoBehaviour
+    public class MainMenuUI : MenuUI
     {
         private ILoadSceneManager _loadSceneManager;
 
         [SerializeField] private Button _buttonExit;
 
 
-        [Inject] private void InjectInputManager(ILoadSceneManager loadSceneManager) { _loadSceneManager = loadSceneManager; }
+        [Inject] private void InjectLoadSceneManager(ILoadSceneManager loadSceneManager) { _loadSceneManager = loadSceneManager; }
 
 
         private void Start()
@@ -25,16 +26,22 @@ namespace JEBST
 
         public void PlayGame()
         {
-            _loadSceneManager.LoadScene(Scenes.BladeSwapScene);_loadSceneManager.LoadScene(Scenes.BladeSwapScene);
+            if (CheckCooldown())
+            {
+                _loadSceneManager.LoadScene(Scenes.BladeSwapScene);
+            }
         }
 
         public void ExitGame()
         {
-            Application.Quit();
+            if (CheckCooldown())
+            {
+                Application.Quit();
 
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
 #endif
+            }
         }
     }
 }
