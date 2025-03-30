@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b5738a7ae563d44ad0f9e7be27d9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseUI: {fileID: 0}
   _scriptableTexts: {fileID: 11400000, guid: 876eb9be3cb4c1f408b9cebddc021c63, type: 2}
   _animator: {fileID: 5002837637813164234}
   _transition: {fileID: 7400000, guid: 8ed87af1723542e4bb0899bb64a4b25e, type: 2}

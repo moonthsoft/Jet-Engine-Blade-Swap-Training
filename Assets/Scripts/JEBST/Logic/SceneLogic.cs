@@ -7,6 +7,11 @@ using Core.Managers;
 
 namespace JEBST
 {
+    /// <summary>
+    /// Scene execution logic, which ensures that actions occur step by step in the correct order, 
+    /// calling DialoguesUI to display the dialogs, CameraManager to move the camera to the correct position, 
+    /// and activating the corresponding Interactables and waiting for them to be activated.
+    /// </summary>
     public class SceneLogic : MonoBehaviour
     {
         private CameraManager _cameraManager;
@@ -25,6 +30,7 @@ namespace JEBST
 
         [Inject] private void InjectLoadSceneManager(ILoadSceneManager loadSceneManager) { _loadSceneManager = loadSceneManager; }
 
+        
 
         void Start()
         {

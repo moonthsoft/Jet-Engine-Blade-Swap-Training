@@ -4,6 +4,10 @@ using Core.Managers;
 
 namespace JEBST
 {
+    /// <summary>
+    /// Class responsible for launching RayCast when the player clicks the mouse, 
+    /// to see if it collides with any interactable object, and in that case, activate its logic.
+    /// </summary>
     public class InteractionRaycaster : MonoBehaviour
     {
         private IInputManager _inputManager;

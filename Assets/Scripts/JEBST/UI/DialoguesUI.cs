@@ -4,17 +4,25 @@ using JEBST.Definitions.Dialogues;
 using System.Collections;
 using Zenject;
 using Core.Managers;
+using Core.Definitions.Sounds;
 
 namespace JEBST
 {
+    /// <summary>
+    /// Class responsible for activating/deactivating the dialog interface, 
+    /// and displaying the text character by character.
+    /// </summary>
     public class DialoguesUI : MonoBehaviour
     {
         private const float TIME_OFFSET = 0.2f;
         private const float TIME_CHAR = 0.01f;
         private const float TIME_COMA = 0.08f;
+        private const int CHARS_PER_SOUND = 5;
 
         private IInputManager _inputManager;
+        private IAudioManager _audioManager;
         private bool _active;
+        private int _countCharSound = 0;
 
         [SerializeField] private PauseUI _pauseUI;
         [SerializeField] private ScriptableTexts _scriptableTexts;
@@ -25,6 +33,8 @@ namespace JEBST
 
 
         [Inject] private void InjectInputManager(IInputManager inputManager) { _inputManager = inputManager; }
+
+        [Inject] private void InjectAudioManager(IAudioManager audioManager) { _audioManager = audioManager; }
 
 
         private void OnEnable()
@@ -78,6 +88,7 @@ namespace JEBST
 
         private IEnumerator DisplayTextCoroutine(string text)
         {
+            _countCharSound = 0;
             int index = 0;
             string stringStart = "";
             string stringEnd = text;
@@ -114,6 +125,7 @@ namespace JEBST
                     _textDialogue.text += stringEnd;
                     _textDialogue.text += "</alpha>";
 
+                    CheckCharSound();
 
                     if (text[index] == ',' || text[index] == '.')
                     {
@@ -130,6 +142,21 @@ namespace JEBST
                 {
                     yield return null;
                 }
+            }
+        }
+
+        private void CheckCharSound()
+        {
+            if (_countCharSound == 0)
+            {
+                _audioManager.PlayFx(Fx.DisplayChar, false, true);
+            }
+
+            _countCharSound++;
+
+            if (_countCharSound >= CHARS_PER_SOUND)
+            {
+                _countCharSound = 0;
             }
         }
     }

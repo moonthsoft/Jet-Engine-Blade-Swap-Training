@@ -3,10 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using Core.Definitions.Scenes;
-using System.Collections;
 
 namespace JEBST
 {
+    /// <summary>
+    /// Class in charge of the logic of the MainMenu buttons
+    /// </summary>
     public class MainMenuUI : MenuUI
     {
         private ILoadSceneManager _loadSceneManager;
@@ -17,8 +19,10 @@ namespace JEBST
         [Inject] private void InjectLoadSceneManager(ILoadSceneManager loadSceneManager) { _loadSceneManager = loadSceneManager; }
 
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
 #if UNITY_WEBGL
             _buttonExit.gameObject.SetActive(false);
 #endif

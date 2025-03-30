@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace JEBST
 {
+    /// <summary>
+    /// Scriptable that contains the texts of the dialogues that will be displayed in the UI to the player.
+    /// </summary>
     [CreateAssetMenu(fileName = "ScriptableTexts", menuName = "Scriptable Objects/Texts")]
     public class ScriptableTexts : ScriptableObject
     {

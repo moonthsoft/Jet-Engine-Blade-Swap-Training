@@ -1,10 +1,12 @@
 using System.Collections;
-using System.ComponentModel;
 using UnityEngine;
 using Zenject;
 
 namespace JEBST
 {
+    /// <summary>
+    /// Manager in charge of moving the camera on rails to the appropriate positions.
+    /// </summary>
     public class CameraManager : MonoInstaller
     {
         private const float TIME_OFFSET = 0.2f;

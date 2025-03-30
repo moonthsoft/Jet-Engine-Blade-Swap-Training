@@ -77,3 +77,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadSceneManager: {fileID: 3549126163713311048, guid: 2e312d9a7c95a744da2f83b11a3c0432, type: 3}
   _inputManager: {fileID: 2206676258241194721, guid: a1f74bd712b99b34aa85f30e9b27fe14, type: 3}
+  _audioManager: {fileID: 8615773453389171095, guid: f4862520f91f1f8498acf42d6af0227e, type: 3}

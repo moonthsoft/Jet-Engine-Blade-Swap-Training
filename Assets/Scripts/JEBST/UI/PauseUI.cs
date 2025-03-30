@@ -1,12 +1,15 @@
 using Core.Definitions.Scenes;
 using Core.Managers;
-using JEBST;
 using System.Collections;
 using UnityEngine;
 using Zenject;
 
 namespace JEBST
 {
+    /// <summary>
+    /// Class responsible for enabling/disabling the pause interface and its button logic. 
+    /// It also enables/disables game pause using Time.timeScale.
+    /// </summary>
     public class PauseUI : MenuUI
     {
         private ILoadSceneManager _loadSceneManager;

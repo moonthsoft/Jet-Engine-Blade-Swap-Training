@@ -1,0 +1,184 @@
+using System;
+using UnityEngine;
+using UnityEngine.Audio;
+using Core.Definitions.Sounds;
+
+namespace Core.Managers
+{
+    /// <summary>
+    /// AudioManager is responsible for managing the playback and volume of the game's sounds and music.
+    /// It also manages the instantiation and handling of AudioSources.
+    /// </summary>
+    public class AudioManager : MonoBehaviour, IAudioManager
+    {
+        #region Parameters
+
+        private const int NUM_SOURCES_FX = 10;
+        private const float RANDOM_PITCH_RANGE = 0.1f;
+
+        [HideInInspector] public float masterVolume;
+
+        //As it is a simple project, there are only the Fx, but in larger projects it would be convenient to use other AudioSource groups
+        //for other types of sounds such as music, ambient sound, voice acting... for being able to manage the volume separately.
+        private AudioSource[] _sourcesFx;
+
+        [SerializeField] private AudioMixer _mixer;
+        [SerializeField] private AudioMixerGroup _mixerMaster;
+        [SerializeField] private FxData[] _soundsDataFx;
+
+        public float MasterVolume { get { return masterVolume; } }
+
+        public static object Fx { get; set; }
+
+        #endregion
+
+
+        #region Init
+
+        private void Awake()
+        {
+            _sourcesFx = InitAudoSources(NUM_SOURCES_FX, false, _mixerMaster, "Fx");
+
+            SetVolumeMaster(0.5f);
+        }
+
+        private AudioSource[] InitAudoSources(int num, bool loop, AudioMixerGroup mixerGroup, string name)
+        {
+            AudioSource[] sourcesAux = new AudioSource[num];
+
+            var parentAux = new GameObject();
+            parentAux.name = "Container_AudioSources_" + name;
+            parentAux.transform.parent = transform;
+            parentAux.transform.localPosition = Vector3.zero;
+
+            for (int i = 0; i < sourcesAux.Length; ++i)
+            {
+                var goAux = new GameObject();
+                goAux.name = "AudioSource_" + name + "_" + (i + 1).ToString();
+                goAux.transform.parent = parentAux.transform;
+                goAux.transform.localPosition = Vector3.zero;
+
+                sourcesAux[i] = goAux.AddComponent<AudioSource>();
+                sourcesAux[i].outputAudioMixerGroup = mixerGroup;
+                sourcesAux[i].loop = loop;
+            }
+
+            return sourcesAux;
+        }
+
+        #endregion
+
+
+        #region Play Fx
+
+        public AudioSource PlayFx(Fx sound, bool loop = false, bool randomPitch = false)
+        {
+            SoundData soundAux = Array.Find(_soundsDataFx, s => s.name == sound);
+
+            if (soundAux == null)
+            {
+                Debug.LogError("Sound not found: " + sound);
+                return null;
+            }
+
+            var sourceAux = GetSourceFree(_sourcesFx);
+
+            if (sourceAux == null)
+            {
+                Debug.LogError("There are no AudioSources available.");
+                return null;
+            }
+
+            PlaySound(sourceAux, soundAux, loop, randomPitch);
+
+            return sourceAux;
+        }
+
+        public void StopAllSourcesAndReset()
+        {
+            StopSources(_sourcesFx);
+        }
+
+
+        private void StopSources(AudioSource[] sources)
+        {
+            for (int i = 0; i < sources.Length; ++i)
+            {
+                sources[i].Stop();
+            }
+        }
+
+        private void PlaySound(AudioSource source, SoundData data, bool loop, bool randomPitch)
+        {
+            source.loop = loop;
+            source.clip = data.clip;
+            source.volume = data.volume;
+
+            source.pitch = randomPitch ? 1f + UnityEngine.Random.Range(-RANDOM_PITCH_RANGE, RANDOM_PITCH_RANGE) : 1f;
+
+            source.Play();
+        }
+
+        private AudioSource GetSourceFree(AudioSource[] sources)
+        {
+            for (int i = 0; i < sources.Length; ++i)
+            {
+                if (!sources[i].isPlaying)
+                {
+                    return sources[i];
+                }
+            }
+
+            return null;
+        }
+
+        #endregion
+
+
+        #region Set Volume
+
+        public void SetVolumeMaster(float volume)
+        {
+            masterVolume = volume;
+
+            _mixer.SetFloat("volumeMaster", GetVolumeDb(volume));
+        }
+
+        private float GetVolumeDb(float volume)
+        {
+            float volumeAux;
+
+            if (volume != 0)
+            {
+                volumeAux = Mathf.Log10(volume) * 20f;
+            }
+            else
+            {
+                volumeAux = -80.0f;
+            }
+
+            return volumeAux;
+        }
+
+        #endregion
+
+
+        #region Audio Data Class
+
+        public abstract class SoundData
+        {
+            public AudioClip clip;
+
+            [Range(0f, 1f)]
+            public float volume = 0.5f;
+        }
+
+        [System.Serializable]
+        public class FxData : SoundData
+        {
+            public Fx name;
+        }
+
+        #endregion
+    }
+}

@@ -7,8 +7,9 @@ namespace Core.Managers
     /// InputManager is responsible for managing the player's input.
     /// It is also responsible for managing the current input device.
     /// 
-    /// In this case, it only takes care of updating the mouse position 
-    /// and checking when the player clicks the mouse.
+    /// In this case, it only takes care of updating the mouse position,
+    /// checking when the player clicks the mouse,
+    /// And if Esc or P was pressed for the pause.
     /// </summary>
     public class InputManager : MonoBehaviour, IInputManager
     {

@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 4292471086713182805}
   _animationAction: {fileID: 7400000, guid: 9a3936d9d7ec70a46aa02a2262bd9d04, type: 2}
+  _audioActive: 0
+  _audioDeactive: 6
 --- !u!135 &2265505499836946382
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -115,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 5401671486062247540}
   _animationAction: {fileID: 7400000, guid: 36344afe9cdc3da4db2c78e18374ed51, type: 2}
+  _audioActive: 0
+  _audioDeactive: 10
 --- !u!135 &3789519518780890172
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -343,6 +347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 2544364099137137777}
   _animationAction: {fileID: 7400000, guid: 7a41312e414de0a40bd3e8a5e3fa6c40, type: 2}
+  _audioActive: 0
+  _audioDeactive: 7
 --- !u!136 &206148819233932356
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -430,7 +436,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 649e590cc73acd94a9c0948a0673e1b4, type: 2}
+  - {fileID: 2100000, guid: 50db175db67c56745ac33bb2562aadfc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -464,6 +470,7 @@ GameObject:
   - component: {fileID: 8313425243882976868}
   - component: {fileID: 2516459476582360639}
   - component: {fileID: 2544364099137137777}
+  - component: {fileID: 1031478505232126167}
   m_Layer: 0
   m_Name: BladeCover
   m_TagString: Untagged
@@ -518,7 +525,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 90a11fc86ceaa1545a75c4d06dbfdb23, type: 2}
+  - {fileID: 2100000, guid: dee9dd19981aa944688ca81cbefd221f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -562,6 +569,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1031478505232126167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4202938666083281981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b65c7cb92e357b49a3e968b6098f8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Interactable: {fileID: 578290078802697331}
+  _audioActive: 8
+  _audioDeactive: 8
 --- !u!1 &4348371354859181353
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +596,7 @@ GameObject:
   - component: {fileID: 7176477267741789579}
   - component: {fileID: 5477928838074615213}
   - component: {fileID: 2181301847472183855}
+  - component: {fileID: 4644504947865071893}
   m_Layer: 0
   m_Name: NewBlade
   m_TagString: Untagged
@@ -672,6 +695,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4644504947865071893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348371354859181353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b65c7cb92e357b49a3e968b6098f8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Interactable: {fileID: 6345658101079244056}
+  _audioActive: 0
+  _audioDeactive: 10
 --- !u!1 &4441572129848662629
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,13 +855,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4824794308048720701}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalRotation: {x: -0.49991274, y: -0.50008726, z: -0.49991274, w: 0.50008726}
   m_LocalPosition: {x: -0.2946173, y: 0.68617827, z: 0.28480706}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8657076140528654724}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: -90, z: 0}
 --- !u!33 &5081978984164501731
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1010,6 +1048,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 2181301847472183855}
   _animationAction: {fileID: 7400000, guid: 254f0e535db2d654e9e7331906c9fa42, type: 2}
+  _audioActive: 0
+  _audioDeactive: 0
 --- !u!135 &5256675827621457024
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1165,7 +1205,6 @@ MonoBehaviour:
   mesh: {fileID: 2708380679203468889}
   _matOn: {fileID: 2100000, guid: cf99227c30047bc468baf779232fc186, type: 2}
   _matOff: {fileID: 2100000, guid: 23c7b44a73058a34789cee644a92807a, type: 2}
-  _matHighlight: {fileID: 2100000, guid: 1b4e9bad05a92544f8d6198472c277cb, type: 2}
 --- !u!65 &3747092920303131590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1369,6 +1408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5188474326399204629}
   - component: {fileID: 4292471086713182805}
+  - component: {fileID: 8982288786341437422}
   m_Layer: 0
   m_Name: TankConnection
   m_TagString: Untagged
@@ -1415,6 +1455,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8982288786341437422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928366566968060942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b65c7cb92e357b49a3e968b6098f8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Interactable: {fileID: 2997922904343325211}
+  _audioActive: 6
+  _audioDeactive: 0
 --- !u!1 &9119106764054598063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,6 +1482,7 @@ GameObject:
   - component: {fileID: 3075161734414769374}
   - component: {fileID: 8544227988277961406}
   - component: {fileID: 5401671486062247540}
+  - component: {fileID: 659924788588825789}
   m_Layer: 0
   m_Name: OldBlade
   m_TagString: Untagged
@@ -1481,7 +1537,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dd51637a71a2bf14b915f9f1c306346d, type: 2}
+  - {fileID: 2100000, guid: 1c80877f810756543a11ada3c95e4fba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1525,3 +1581,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &659924788588825789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119106764054598063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b65c7cb92e357b49a3e968b6098f8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Interactable: {fileID: 7677670080734179917}
+  _audioActive: 0
+  _audioDeactive: 9
