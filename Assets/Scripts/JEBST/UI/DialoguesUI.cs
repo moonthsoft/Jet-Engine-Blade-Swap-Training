@@ -49,6 +49,8 @@ namespace JEBST
 
             yield return new WaitForSeconds(_transition.length);
 
+            yield return new WaitForSeconds(TIME_OFFSET);
+
             //Display text character by character
             yield return StartCoroutine(DisplayTextCoroutine(text));
 

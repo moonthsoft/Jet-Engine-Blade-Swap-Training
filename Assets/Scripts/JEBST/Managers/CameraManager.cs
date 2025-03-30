@@ -2,7 +2,6 @@ using System.Collections;
 using System.ComponentModel;
 using UnityEngine;
 using Zenject;
-using static UnityEditor.PlayerSettings;
 
 namespace JEBST
 {
