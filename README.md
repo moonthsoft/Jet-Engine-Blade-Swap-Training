@@ -2,7 +2,9 @@
 Technical test for Capgemini of an app to train employees on the steps to change a jet engine blade.
 
 A simplistic approach was chosen, with a camera on rails and very basic interaction, requiring only tapping on an object to interact with it, for two reasons:
+
 The first is to prioritize simple controls that allow the application to be used by users unfamiliar with video games and interactive applications.
+
 The second one is to reduce development costs and times, and fit better in the client's budget and schedule.
 
 ### Execution:
@@ -12,18 +14,23 @@ Open the "BladeSwapScene" or "Init" scene in the following folder: Assets/Scenes
 
 ### Links:
 WebGL executable on Itch.io:
+
 https://moonthsoft.itch.io/jet-engine-blade-swap-training
 
 WebGL executable on GoogleDrive:
+
 https://drive.google.com/file/d/154Iu25gw9Y813UO36WvbpbnDwl98uL6E/view?usp=sharing
 
 Windows executable on GoogleDrive: 
+
 https://drive.google.com/file/d/1jLCUJBuR4iv_hNapqPB35oeYgX5OBkkA/view?usp=sharing
 
 Repository on GitHub:
+
 https://github.com/moonthsoft/Jet-Engine-Blade-Swap-Training
 
 Project on GoogleDrive:
+
 https://drive.google.com/file/d/1HmN2RNe8rgFL4v3sHB6qyF4xUGuidcX6/view?usp=sharing
 
 ### Required Dependencies:
@@ -31,7 +38,8 @@ https://drive.google.com/file/d/1HmN2RNe8rgFL4v3sHB6qyF4xUGuidcX6/view?usp=shari
 - TextMesh Pro
 
 ### Controls:
-Click the mouse on the desired area, whether it's a UI element, to advance the text displayed on the screen, or to interact with the jet engine elements. 
+Click the mouse on the desired area, whether it's a UI element, to advance the text displayed on the screen, or to interact with the jet engine elements.
+
 You can also tap the screen on mobile devices for the same effect.
 
 Press the 'Esc' or 'P' keys to pause the game.
@@ -75,12 +83,13 @@ The game architecture is based on managers, accessed through dependency injectio
 - __CameraManager:__ Manager in charge of managing the movement of the camera on rails to the desired positions.
 
 In addition to the managers, we also highlight SceneLogic, which is responsible for executing the application logic in the proper order.
+
 The classes that manage the UI logic: DialoguesUI, MainMenuUI, and PauseUI.
+
 And the Interactable system, activated by physics, through the InteractionRaycaster class, which launches a raycast to check for any collisions with an Interactable when the corresponding input is activated.
 
 ### BladeSwapScene Scene Structure:
 In the BladeSwapScene scene hierarchy, the following elements can be found:
-
 - __GlobalVolume:__ URP post-production effects such as Bloom or Tonemapping are defined here.
 - __SceneContext:__ Handles dependency injection for managers using Zenject.
 - __EventSystem:__ Default Unity component for UI navigation (unused in this project).
@@ -101,17 +110,29 @@ This project was developed by Antonio García Tortosa.
 The table and Jet Engine models, as well as the texts to be displayed to the player, were provided by Capgemini.
 
 The floor texture is by Charlotte Baglioni:
+
 https://polyhaven.com/a/granite_tile
 
 The different sounds used in the game have been downloaded from Freesound:
+
 https://freesound.org/people/MATRIXXX_/sounds/515823/
+
 https://freesound.org/people/tjandrasounds/sounds/201590/
+
 https://freesound.org/people/Dmitry_mansurev64/sounds/748027/
+
 https://freesound.org/people/kickhat/sounds/264446/
+
 https://freesound.org/people/AdamsArchive/sounds/379022/
+
 https://freesound.org/people/esperar/sounds/170801/
+
 https://freesound.org/people/CJspellsfish/sounds/669474/
+
 https://freesound.org/people/sjturia/sounds/370905/
+
 https://freesound.org/people/JanKoehl/sounds/85584/
+
 https://freesound.org/people/Aiwha/sounds/190019/
+
 https://freesound.org/people/BenjaminNelan/sounds/410361/
