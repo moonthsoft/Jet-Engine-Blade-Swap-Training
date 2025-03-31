@@ -10,6 +10,22 @@ Unity Version: Unity 6.0.43f1
 
 Open the "BladeSwapScene" or "Init" scene in the following folder: Assets/Scenes/BladeSwapScene.unity
 
+### Links:
+WebGL executable on Itch.io:
+https://moonthsoft.itch.io/jet-engine-blade-swap-training
+
+WebGL executable on GoogleDrive:
+https://drive.google.com/file/d/154Iu25gw9Y813UO36WvbpbnDwl98uL6E/view?usp=sharing
+
+Windows executable on GoogleDrive: 
+https://drive.google.com/file/d/1jLCUJBuR4iv_hNapqPB35oeYgX5OBkkA/view?usp=sharing
+
+Repository on GitHub:
+https://github.com/moonthsoft/Jet-Engine-Blade-Swap-Training
+
+Project on GoogleDrive:
+https://drive.google.com/file/d/1HmN2RNe8rgFL4v3sHB6qyF4xUGuidcX6/view?usp=sharing
+
 ### Required Dependencies:
 - Zenject
 - TextMesh Pro
